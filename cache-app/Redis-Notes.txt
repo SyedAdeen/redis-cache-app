@@ -1,0 +1,36 @@
+So what Redis Do:
+Redis is an open-source, in-memory data store that can be used as a database, message broker
+
+first route->middleware->if in redis cache then get data from there 
+                                    else -> in controller get data from db and store in redis cache
+
+
+
+to install redis : npm install redis
+
+open wsl on cmd
+
+wsl: sudo apt install redis
+wsl: redis-cli
+wsl: get users:maxAge:31 //(cached_key)
+
+
+Url of redis
+
+on Docker: const redisClient = redis.createClient({
+    url: process.env.REDIS_URL
+});
+
+
+for localhost or cmd wsl:
+const redisClient = redis.createClient({
+    url: 'redis://localhost:6379'
+});
+
+
+
+for migration on docker-compose exec app sh (or on docker node app terminal)
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
+
+
